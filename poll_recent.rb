@@ -21,7 +21,7 @@ class RecentRestSearcher
       {
         tweet_id: status.id,
         username: status.user.screen_name,
-        time:     DateTime.parse(status.created_at).to_s,
+        time:     status.created_at.to_s,
         text:     status.full_text
       }
     end
