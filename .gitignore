@@ -1,0 +1,8 @@
+/.bundle
+*.DS_Store
+*.swp
+*.swo
+*~
+!.keep
+.env
+.rvmrc
