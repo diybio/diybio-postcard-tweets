@@ -34,6 +34,6 @@ class RecentRestSearcher
   end
 end
 
-tweets = RecentRestSearcher.new('#idea').recent_tweets
+tweets = RecentRestSearcher.new('#diybiohi').recent_tweets
 
 p tweets
