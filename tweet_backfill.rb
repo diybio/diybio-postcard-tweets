@@ -1,4 +1,5 @@
 require_relative './shared_config'
+require_relative './tweet_saver'
 require 'nokogiri'
 require 'open-uri'
 
@@ -9,10 +10,17 @@ html = open(url).read
 doc = Nokogiri::HTML(html)
 
 tweets = doc.css('div.content').map do |content|
+  tweet_id = content.css('a.js-permalink').attr('href').value.scan(/\d+$/).first.to_i
   username = content.css('span.username').text
   time     = content.css('span[data-time]').attr('data-time').value
-  tweet    = content.css('p.tweet-text').text
-  id       = content.css('a.js-permalink').attr('href').value.scan(/\d+$/).first.to_i
+  text     = content.css('p.tweet-text').text
 
-  [id, username, time, tweet]
+  {
+    tweet_id: tweet_id,
+    username: username,
+    time:     time,
+    text:     text
+  }
 end
+
+TweetSaver.new.save(tweets)
