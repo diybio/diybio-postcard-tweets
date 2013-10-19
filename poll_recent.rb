@@ -16,6 +16,18 @@ class RecentRestSearcher
   end
 
   def recent_tweets
+    search = Twitter.search(@term, { count: 100 })
+    search.results.map do |status|
+      {
+        tweet_id: status.id,
+        username: status.user.screen_name,
+        time:     DateTime.parse(status.created_at).to_s,
+        text:     status.full_text
+      }
+    end
+  end
+
+  def recent_tweets_multi_page
     params = { count: 100 }
     tweets = []
 
