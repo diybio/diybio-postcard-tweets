@@ -12,7 +12,7 @@ doc = Nokogiri::HTML(html)
 tweets = doc.css('div.content').map do |content|
   tweet_id = content.css('a.js-permalink').attr('href').value.scan(/\d+$/).first.to_i
   username = content.css('span.username').text
-  time     = content.css('span[data-time]').attr('data-time').value
+  time     = Time.at(content.css('span[data-time]').attr('data-time').value.to_i).to_datetime.to_s # sec-from-epoch to ISO8601
   text     = content.css('p.tweet-text').text
 
   {

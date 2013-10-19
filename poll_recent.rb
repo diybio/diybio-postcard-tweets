@@ -22,7 +22,7 @@ class RecentRestSearcher
     loop do
       search = Twitter.search(@term, params)
       search.results.each do |status|
-        tweets << [status.id, status.user.screen_name, status.created_at, status.full_text]
+        tweets << [status.id, status.user.screen_name, DateTime.parse(status.created_at).to_s, status.full_text]
       end
 
       break unless search.next_results?
@@ -34,6 +34,6 @@ class RecentRestSearcher
   end
 end
 
-tweets = RecentRestSearcher.new('#diybiohi').recent_tweets
+tweets = RecentRestSearcher.new("#diybiohi").recent_tweets
 
 p tweets

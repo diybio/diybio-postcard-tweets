@@ -6,7 +6,7 @@ class TweetSaver
 
   def save(tweets)
     puts "Previously, we stored #{tweets_collection.size} total tweets"
-    puts "Saving #{tweets.size} tweets"
+    puts "Processing #{tweets.size} (possibly) new tweet results"
 
     tweets_inserted = 0
     tweets.each do |tweet|
