@@ -8,7 +8,7 @@ Twitter.configure do |config|
   config.oauth_token_secret  = ENV['TWITTER_OAUTH_SECRET']
 end
 
-# Twitter.middleware.insert_after Twitter::Response::RaiseError, Faraday::Response::Logger
+Twitter.middleware.insert_after Twitter::Response::RaiseError, Faraday::Response::Logger
 
 class RecentRestSearcher
   def initialize(term)
