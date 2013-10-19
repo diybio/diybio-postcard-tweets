@@ -1,4 +1,5 @@
 require_relative './shared_config'
+require_relative './tweet_saver'
 require 'twitter'
 
 Twitter.configure do |config|
@@ -47,5 +48,4 @@ class RecentRestSearcher
 end
 
 tweets = RecentRestSearcher.new(ENV['TWITTER_SEARCH'] || "#diybiohi").recent_tweets
-
-p tweets
+TweetSaver.new.save(tweets)
