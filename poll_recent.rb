@@ -34,6 +34,6 @@ class RecentRestSearcher
   end
 end
 
-tweets = RecentRestSearcher.new("#diybiohi").recent_tweets
+tweets = RecentRestSearcher.new(ENV['TWITTER_SEARCH'] || "#diybiohi").recent_tweets
 
 p tweets
