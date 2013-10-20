@@ -19,6 +19,5 @@ get '/tweets.json' do
 end
 
 get '/' do
-  content_type "text/html"
-  '<a href="/tweets.json">tweets.json</a>'
+  send_file File.join(settings.public_folder, 'index.html')
 end
