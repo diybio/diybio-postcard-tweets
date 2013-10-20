@@ -1,0 +1,8 @@
+.thumbnail { margin-top:30px; }
+
+.jumbotron { background-color: transparent;}
+
+.imagewrapper {
+	overflow: hidden;
+	height:333px;
+}
