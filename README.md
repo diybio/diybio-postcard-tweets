@@ -38,7 +38,19 @@ Now you can visit [http://localhost:3000](http://localhost:3000).
 Deploy
 ==============
 
-Deploy on Heroku with MongoHQ and scheduler addons.  Scheduler addon runs:
+After pulling down the git repo, add the heroku repo as a remote:
+
+```
+git remote add heroku git@heroku.com:diybio-postcard-tweets.git
+```
+
+Deploy on Heroku with MongoHQ and scheduler addons.  
+
+```
+git push remote heroku
+```
+
+Scheduler addon runs:
 
 `TWITTER_SEARCH=desired-search bundle exec ruby poll_recent.rb`
 
