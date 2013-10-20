@@ -152,6 +152,10 @@
 
       </div> <!-- /gallery -->
 
+      <div class="row">
+        <div id="tweets-container" class="col-md-6">
+        </div>
+      </div>
     </div> <!-- /container -->
 
 
@@ -161,7 +165,30 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/handlebars.js"></script>
   
+    <script id="entry-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each tweets}}
+          <li>{{username}}: <a href="something/{{ tweet_id }}">{{ text }}</a></li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <!-- load jsons -->
+    <script type="text/javascript">
+      $(function() {
+          $.get('/tweets.json').success(function(tweets) {
+            // console.log(tweets);
+            var source   = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var context = { tweets: tweets };
+            var html    = template(context);
+
+            $('#tweets-container').html(html);
+          });
+      });
+    </script>
   <!-- livereload -->
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
