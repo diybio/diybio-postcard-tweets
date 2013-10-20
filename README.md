@@ -47,7 +47,7 @@ git remote add heroku git@heroku.com:diybio-postcard-tweets.git
 Deploy on Heroku with MongoHQ and scheduler addons.  
 
 ```
-git push remote heroku
+git push heroku
 ```
 
 Scheduler addon runs:
