@@ -16,7 +16,7 @@ tweets = doc.css('div.content').map do |content|
   text     = content.css('p.tweet-text').text
 
   {
-    tweet_id: tweet_id,
+    tweet_id: tweet_id.to_s,
     username: username,
     time:     time,
     text:     text
