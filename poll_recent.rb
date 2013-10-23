@@ -20,7 +20,7 @@ class RecentRestSearcher
     search = Twitter.search(@term, { count: 100 })
     search.results.map do |status|
       {
-        tweet_id: status.id,
+        tweet_id: status.id.to_s,
         username: status.user.screen_name,
         time:     status.created_at.to_s,
         text:     status.full_text
