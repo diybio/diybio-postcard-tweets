@@ -12,10 +12,11 @@ options '/tweets.json' do
   halt 200
 end
 
+# limit query to most recent 8 tweets
 get '/tweets.json' do
   allow_cors
   content_type "application/json"
-  tweets_collection.find.to_a.to_json
+  tweets_collection.find.limit(8).sort({tweet_id: -1}).to_a.to_json
 end
 
 get '/' do

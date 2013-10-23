@@ -57,7 +57,7 @@
           </div>
           <div class="col-md-6">
             <h2>Tweet “#diybiohi” to contribute to the free diybio postcard project</h2>
-            <p>The diybio postcard project is a mini-newsletter that shares a short list of the most interesting projects from the last quarter. Subscriptions are free and anyone can submit an update via twitter.</p>
+            <p>It's a short list of the most interesting diybio projects from the last quarter - delivered to your door via postcard. Subscriptions are free and anyone can submit an update via twitter.</p>
             <div class="row">
               <div class="col-sm-6">
                 <a class="btn btn-lg btn-primary btn-block" href="./">contribute <span class="glyphicon glyphicon-comment"></span></a>
@@ -77,9 +77,7 @@
       </div>
 
       <div class="row">
-        
-        <div class="col-md-3 col-sm-3 text-center">start contributing: <strong>7 Nov 2013</strong></div>
-      
+        <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>7 Nov 2013</strong></div>
         <div class="col-md-6 col-sm-6">
           <div class="progress progress-striped active">
             <div class="progress-bar" role="progressbar" aria-valuenow="45" aria- valuemin="0" aria-valuemax="100" style="width: 45%">
@@ -87,94 +85,49 @@
             </div>
           </div>
         </div>          
-        
         <div class="col-md-3 col-sm-3 text-center">postcards printed: <strong>24 Nov 2013</strong></div>
-
       </div>
-      
-      <div class="row"> <!-- gallery -->
 
-        <div class="col-sm-6 col-md-6">
+      <div id="tweets-container">
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- handlebars tweets container template -->
+    <script id="entry-template" type="text/x-handlebars-template">
+      {{#each tweets}}
+        
+      {{#everyOther @index 3 }}
+        <div class="row">
+      {{/everyOther}}
+
+        <div class="col-sm-4 col-md-4">
           <div class="thumbnail">
             <div class="imagewrapper">
               <img class="img-responsive" src="assets/images/ByB_DIYBioPostcard.jpeg" alt="notworking">
             </div>
             <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>description</p>
+              <h3><a href="twitter.com/{{ username }}/status/{{ tweet_id }}">{{username}}<a/></h3>
+              <p>{{ text }}</p>
               <p><a href="#" class="btn btn-default">Button</a></p>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail">
-            <div class="imagewrapper">
-              <img class="img-responsive" src="assets/images/Cathal Garvey.png" alt="notworking">
-            </div>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>description</p>
-              <p><a href="#" class="btn btn-default">Button</a></p>
-            </div>
-          </div>
+      {{#everyOther @index 3 }}
         </div>
-
-      </div> <!-- /gallery -->
-
-      <div class="row"> <!-- gallery -->
-
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail">
-            <div class="imagewrapper">
-              <img class="img-responsive" src="assets/images/JasonBobe.jpeg" alt="notworking">
-            </div>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>description</p>
-              <p><a href="#" class="btn btn-default">Button</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-6">
-          <div class="thumbnail">
-            <div class="imagewrapper">
-              <img class="img-responsive" src="http://placehold.it/200x600" alt="notworking">
-            </div>
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>description</p>
-              <p><a href="#" class="btn btn-default">Button</a></p>
-            </div>
-          </div>
-        </div>
-
-      </div> <!-- /gallery -->
-
-      <div class="row">
-        <p>yeah!</p>
-        <div id="tweets-container" class="col-md-6">
-        </div>
-      </div>
-    </div> <!-- /container -->
+      {{/everyOther}}
+        
+      {{/each}}
+    </script>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+
+    <!-- Bootstrap, jquery, & handlebars core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars.js"></script>
-  
-    <script id="entry-template" type="text/x-handlebars-template">
-      <ul>
-        {{#each tweets}}
-          <li>{{username}}: <a href="something/{{ tweet_id }}">{{ text }}</a></li>
-        {{/each}}
-      </ul>
-    </script>
 
     <!-- load jsons -->
     <script type="text/javascript">
@@ -190,6 +143,17 @@
           });
       });
     </script>
+
+    <!-- handlebars helpers -->
+    <script type="text/javascript">
+      Handlebars.registerHelper("everyOther", function (index, amount, scope) {
+        if ( ++index % amount ) 
+          return scope.inverse(this);
+        else 
+          return scope.fn(this);
+        });
+    </script>
+
   <!-- livereload -->
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
