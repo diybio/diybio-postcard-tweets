@@ -2,6 +2,8 @@
 
 .jumbotron { background-color: transparent;}
 
+.jumbotron p { margin-bottom: 20px; }
+
 .imagewrapper {
 	overflow: hidden;
 	height:233px;
