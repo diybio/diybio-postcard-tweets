@@ -19,7 +19,7 @@ TWITTER_CONSUMER_SECRET=your-consumer-secret-here
 TWITTER_OAUTH_KEY=your-key-here
 TWITTER_OAUTH_SECRET=your-secret-here
 MONGODB_URL=mongodb://localhost:27017/your-local-dbname-here
-PORT=3000
+DEV_PORT=3000
 ```
 
 Install dependencies and start:
