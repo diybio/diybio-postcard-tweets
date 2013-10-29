@@ -41,6 +41,7 @@
             <li class="active"><a href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi">Contribute</a></li>
             <li><a href="https://docs.google.com/spreadsheet/viewform?formkey=dFpESTlEeW5zLVEyakxkSkhnMHZwNFE6MQ">Subscribe</a></li>
             <li><a href="./">Archive</a></li>
+            <li><a href="#FAQ">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -91,15 +92,20 @@
       <div id="tweets-container">
       </div>
 
+      <div id="FAQ" class="row clearfix">
+        <div class="col-md-12 text-center">
+          <h1>Postcards FAQ</h1>
+        </div>
+      </div>
+
     </div> <!-- /container -->
 
     <!-- handlebars tweets container template -->
     <script id="entry-template" type="text/x-handlebars-template">
+      <!-- open first row -->
+      <div class="row">
+
       {{#each tweets}}
-        
-      {{#everyOther @index 3 }}
-        <div class="row">
-      {{/everyOther}}
 
         <div class="col-sm-4 col-md-4">
           <div class="thumbnail">
@@ -114,13 +120,15 @@
           </div>
         </div>
 
+      <!-- every 3 posts, close then open row div -->
       {{#everyOther @index 3 }}
         </div>
+        <div class="row">
       {{/everyOther}}
         
       {{/each}}
+        </div> <!-- //close last row -->
     </script>
-
 
 
     <!-- Bootstrap, jquery, & handlebars core JavaScript -->
