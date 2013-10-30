@@ -34,14 +34,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">diybio postcard project</a>
+          <a href="/"><img src="assets/images/diybio_logo_googles.png" class="pull-left logo"></a>
+          <a class="navbar-brand" href="/">diybio postcard project</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi" target="postcard_tweet">Contribute</a></li>
             <li><a href="https://docs.google.com/spreadsheet/viewform?formkey=dFpESTlEeW5zLVEyakxkSkhnMHZwNFE6MQ" target="postcard_subscribe">Subscribe</a></li>
-            <li><a href="./">Archive</a></li>
-            <li><a href="#FAQ">FAQ</a></li>
+            <li><a href="http://diybio.org/postcards/vol1/">Archive</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -54,14 +55,14 @@
       <div class="jumbotron">
         <div class="row">
           <div class="col-md-6">
-            <img class="img-responsive" src="assets/images/diybio_postcard_mockup_800x608px.png"></img>
+            <img class="img-responsive" src="assets/images/diybio_postcard_mockup_800x608px.png">
           </div>
           <div class="col-md-6">
             <h2>Tweet “#diybiohi” to contribute to the free diybio postcard project</h2>
-            <p>It's a short list of the most interesting diybio projects from the last quarter - delivered to your door via postcard. Subscriptions are free and anyone can submit an update via twitter. <a class="text-primary" href="#FAQ">Learn more.</a></p>
+            <p>It's a short list of the most interesting diybio projects from the last quarter - delivered to your door via postcard. Subscriptions are free and anyone can submit an update via twitter. <a class="text-primary" href="#faq">Learn more.</a></p>
             <div class="row">
               <div class="col-sm-6">
-                <a class="btn btn-lg btn-primary btn-block" href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi" target="postcard_tweet">contribute <span class="glyphicon glyphicon-comment"></span></a>
+                <a class="btn btn-lg btn-primary btn-block" href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi" target="postcard_tweet">contribute <span class="glyphicon glyphicon-comment"> </span></a>
               </div>
               <div class="col-sm-6">
                 <a class="btn btn-lg btn-success btn-block" href="https://docs.google.com/spreadsheet/viewform?formkey=dFpESTlEeW5zLVEyakxkSkhnMHZwNFE6MQ" target="postcard_subscribe">subscribe <span class="glyphicon glyphicon-inbox"></span></a>
@@ -71,30 +72,55 @@
         </div>
       </div> <!-- /jumbotron -->
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h1>Current Submissions</h1>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>7 Nov 2013</strong></div>
-        <div class="col-md-6 col-sm-6">
-          <div class="progress progress-striped active">
-            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria- valuemin="0" aria-valuemax="100" style="width: 45%">
-              <span class="sr-only">45% Complete</span>
-            </div>
+      <div id="launch-progress"> <!-- progress bar -->
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1>Current Submissions</h1>
           </div>
-        </div>          
-        <div class="col-md-3 col-sm-3 text-center">postcards printed: <strong>24 Nov 2013</strong></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>7 Nov 2013</strong></div>
+          <div class="col-md-6 col-sm-6">
+            <div class="progress progress-striped active">
+              <div class="progress-bar" role="progressbar" aria-valuenow="45" aria- valuemin="0" aria-valuemax="100" style="width: 45%">
+                <span class="sr-only">45% Complete</span>
+              </div>
+            </div>
+          </div>          
+          <div class="col-md-3 col-sm-3 text-center">postcards printed: <strong>24 Nov 2013</strong></div>
+        </div>
       </div>
 
       <div id="tweets-container">
       </div>
 
-      <div id="FAQ" class="row clearfix">
-        <div class="col-md-12 text-center">
+      <div id="faq" class="clearfix"> <!-- faq -->
+        <div class="row text-center">
           <h1>Postcards FAQ</h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="list-group">
+
+              <h4>How much does it cost?</h4>
+              <p>It's free! We have funding to print &amp; mail 300-500 cards (depending on the proportion of international subscribers).</p>
+
+              <h4>Who picks the winning entries?</h4>
+              <p>Each postcard has room for 7 contributions. Currently we (Jason Bobe &amp; Mac Cowell) just pick what seem like the "best" 7, with feedback from the diybio google group, but we're working on adding a voting system to truely democratize the selection process.</p>
+
+              <h4>How do I subscribe?</h4>
+              <p>Fill out <a href="https://docs.google.com/spreadsheet/viewform?formkey=dFpESTlEeW5zLVEyakxkSkhnMHZwNFE6MQ" target="postcard_subscribe">this form</a>. Subscriptions are currently free.</p>
+
+              <h4>How do I unsubscribe?</h4>
+              <p>Email <a href="mailto:postcards@diybio.org">postcards@diybio.org</a> with your full name and ask to unsubscribe.</p>
+
+              <h4>Where can I see prior postcards?</h4>
+              <p>The first batch went out <a href="http://diybio.org/postcards/vol1/">January 2012.</a></p>
+              <img src="assets/images/2011-01-01_postcardv1_600x450.jpg" class="img-rounded img-responsive">
+
+            </div>
+          </div>
         </div>
       </div>
 
@@ -140,7 +166,7 @@
     <!-- load jsons -->
     <script type="text/javascript">
       $(function() {
-          $.get('/tweets.json').success(function(tweets) {
+          $.get('/diybiohi.json').success(function(tweets) {
             // console.log(tweets);
             var source   = $("#entry-template").html();
             var template = Handlebars.compile(source);

@@ -1,8 +1,17 @@
-.thumbnail { margin-top:30px; }
+.navbar .logo { padding: 14px 10px 0 0; }
 
 .jumbotron { background-color: transparent;}
 
-.jumbotron p { margin-bottom: 20px; }
+.jumbotron p { margin-top: 20px; margin-bottom: 30px; }
+
+@media screen and (max-width: 768px) { 
+	.btn-block { margin-bottom: 1.33em; }	
+	.navbar .logo { padding: 14px 0 0 15px; }
+}
+
+#launch-progress { margin-top: -20px; }
+
+.thumbnail { margin-top:30px; }
 
 .imagewrapper {
 	overflow: hidden;

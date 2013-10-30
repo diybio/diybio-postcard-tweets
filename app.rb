@@ -12,12 +12,29 @@ options '/tweets.json' do
   halt 200
 end
 
-# limit query to most recent 15 tweets
+options '/diybiohi.json' do
+  allow_cors
+  halt 200
+end
+
+# json endpoint for all tweets
 get '/tweets.json' do
   allow_cors
   content_type "application/json"
-  tweets_collection.find.limit(15).sort({tweet_id: -1}).to_a.to_json
-  # tweets_collection.find({text: {$regex : '.*diybiohi.*'}}).sort({​time: -1}).limit(20)
+  tweets_collection.find.limit(30).sort({tweet_id: -1}).to_a.to_json
+end
+
+# json endpoint for only #diybiohi tweets. 
+# TODO put these in their own collection
+# TODO need to only return tweets from current postcard period
+# TODO regex pattern is not efficient
+# Also see 
+# 	http://docs.mongodb.org/ecosystem/tutorial/model-data-for-ruby-on-rails/
+# 	https://github.com/mongodb/mongo-ruby-driver/wiki/Tutorial
+get '/diybiohi.json' do
+  allow_cors
+  content_type "application/json"
+  tweets_collection.find("text" => {"$regex" => '.*diybiohi.*'}).sort(:time => :desc).limit(15).to_a.to_json
 end
 
 get '/' do
