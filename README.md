@@ -19,7 +19,6 @@ TWITTER_CONSUMER_SECRET=your-consumer-secret-here
 TWITTER_OAUTH_KEY=your-key-here
 TWITTER_OAUTH_SECRET=your-secret-here
 MONGODB_URL=mongodb://localhost:27017/your-local-dbname-here
-DEV_PORT=3000
 ```
 
 Install dependencies and start:
@@ -33,7 +32,7 @@ $ foreman start
 17:18:46 web.1  | started with pid 95407
 ```
 
-Now you can visit [http://localhost:3000](http://localhost:3000).
+Now you can visit [http://localhost:5000](http://localhost:5000).
 
 Deploy
 ==============
