@@ -28,6 +28,7 @@ end
 # TODO put these in their own collection
 # TODO need to only return tweets from current postcard period
 # TODO regex pattern is not efficient
+# TODO need to de-dupe tweets or look for re-tweets?
 # Also see 
 # 	http://docs.mongodb.org/ecosystem/tutorial/model-data-for-ruby-on-rails/
 # 	https://github.com/mongodb/mongo-ruby-driver/wiki/Tutorial

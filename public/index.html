@@ -58,7 +58,7 @@
             <img class="img-responsive" src="assets/images/diybio_postcard_mockup_800x608px.png">
           </div>
           <div class="col-md-6">
-            <h2>Tweet “#diybiohi” to contribute to the free diybio postcard project</h2>
+            <h2>Tweet “<a href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi" target="postcard_tweet">#diybiohi</a>” to contribute to the free diybio postcard project</h2>
             <p>It's a short list of the most interesting diybio projects from the last quarter - delivered to your door via postcard. Subscriptions are free and anyone can submit an update via twitter. <a class="text-primary" href="#faq">Learn more.</a></p>
             <div class="row">
               <div class="col-sm-6">
@@ -94,14 +94,35 @@
 
       <div id="tweets-container">
       </div>
-
+<!--
+      <div class="tweets-Oembed row">
+        <div class="col-md-6">
+            <p>testing twitter <a href="https://dev.twitter.com/docs/embedded-tweets">Oembed api</a> for embedded tweets. It returns json objects with html that will rendered by the twitter js widget.</p>
+                  <blockquote class="twitter-tweet"><p>Search API will now always return "real" Twitter user IDs. The with_twitter_user_id parameter is no longer necessary. An era has ended. ^TS</p>&mdash; Twitter API (@twitterapi) <a href="https://twitter.com/twitterapi/status/133640144317198338" data-datetime="2011-11-07T20:21:07+00:00">November 7, 2011</a></blockquote>
+        <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+-->
       <div id="faq" class="clearfix"> <!-- faq -->
         <div class="row text-center">
           <h1>Postcards FAQ</h1>
         </div>
         <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
+          <div class="col-sm-6 col-sm-offset-3">
             <div class="list-group">
+
+              <h4>What's this postcard thing all about?</h4>
+              <p>The diybio postcard project is designed to encourage the members of the community to share quick updates about their work each quarter. Submissions are short and organized via twitter. Once a quarter, we pick the 7 most interesting and print them on hundreds of postcards, using the photo from one of the entries as the front of the card. Then we mail the cards to subscribers all over the world - for free. We hope the cards become physical artifacts celebrating and documenting the activity of diybio.</p>
+              
+              <h4>How do I contribute?</h4>
+              <p>Contributing is accomplished via tweeting. Valid contributions have three parts:
+                <ul>
+                  <li>a short description of your work</li>
+                  <li>a link to a photo of the work (a link to a page w/ a photo and more information is even better</li>
+                  <li>the hashtag <em>#diybiohi</em></li>
+                  It's that simple. So what are you waiting for? <a href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi">Contribute now!</a>
+                </ul>
+              </p>
 
               <h4>How much does it cost?</h4>
               <p>It's free! We have funding to print &amp; mail 300-500 cards (depending on the proportion of international subscribers).</p>
@@ -133,21 +154,18 @@
 
       {{#each tweets}}
 
-        <div class="col-sm-4 col-md-4">
-          <div class="thumbnail">
-            <div class="imagewrapper">
-              <img class="img-responsive" src="assets/images/ByB_DIYBioPostcard.jpeg" alt="notworking">
-            </div>
-            <div class="caption">
-              <h3><a href="http://twitter.com/{{ username }}/status/{{ tweet_id }}">{{username}}<a/></h3>
-              <p>{{{ text }}}</p>
-              <p><a href="#" class="btn btn-default">Button</a></p>
-            </div>
-          </div>
+        <div class="col-sm-6">
+          <blockquote>
+            <p>{{linkify text}}</p>
+            <small>
+              <a href="http://twitter.com/{{username}}">{{username}}<a/> at 
+              <cite title="{{tweet_id}}"><a href="http://twitter.com/{{username}}/status/{{tweet_id}}">{{tweet_id}}<a/></cite>
+            </small>
+          </blockquote>
         </div>
 
-      <!-- every 3 posts, close then open row div -->
-      {{#everyOther @index 3 }}
+      <!-- every 2 posts, close then open row div -->
+      {{#everyOther @index 2 }}
         </div>
         <div class="row">
       {{/everyOther}}
@@ -162,6 +180,7 @@
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars.js"></script>
+    <script src="./assets/js/ba-linkify.js"></script>
 
     <!-- load jsons -->
     <script type="text/javascript">
@@ -180,12 +199,19 @@
 
     <!-- handlebars helpers -->
     <script type="text/javascript">
+
       Handlebars.registerHelper("everyOther", function (index, amount, scope) {
         if ( ++index % amount ) 
           return scope.inverse(this);
         else 
           return scope.fn(this);
-        });
+      });
+
+      Handlebars.registerHelper('linkify', function (text) {
+        var text = linkify(text);
+        return new Handlebars.SafeString(text);
+      });
+
     </script>
 
   <!-- livereload -->

@@ -6,10 +6,17 @@
 
 @media screen and (max-width: 768px) { 
 	.btn-block { margin-bottom: 1.33em; }	
-	.navbar .logo { padding: 14px 0 0 15px; }
+	.navbar .logo { padding: 16px 0 0 15px; }
+	.navbar-brand { font-size: 16px; }
+	.jumbotron h2 { font-size: 1.3em; text-align: center; }
 }
 
-#launch-progress { margin-top: -20px; }
+#launch-progress { margin-top: -60px; margin-bottom: 40px; }
+#launch-progress h1 { margin-bottom: 20px; }
+
+#tweets-container .row div { overflow: hidden; }
+
+
 
 .thumbnail { margin-top:30px; }
 
