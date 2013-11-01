@@ -72,15 +72,17 @@
         </div>
       </div> <!-- /jumbotron -->
 
-      <div id="launch-progress"> <!-- progress bar -->
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <h1>Current Submissions</h1>
-          </div>
+      <div class="row launch-progress">
+        <div class="col-md-12 text-center">
+          <h1>Current Submissions</h1>
         </div>
+      </div>
+
+<!-- TODO make launch bars dynamic
+			<div class="launch-progress">
 
         <div class="row">
-          <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>7 Nov 2013</strong></div>
+          <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>1 Nov 2013</strong></div>
           <div class="col-md-6 col-sm-6">
             <div class="progress progress-striped active">
               <div class="progress-bar" role="progressbar" aria-valuenow="45" aria- valuemin="0" aria-valuemax="100" style="width: 45%">
@@ -90,25 +92,20 @@
           </div>          
           <div class="col-md-3 col-sm-3 text-center">postcards printed: <strong>24 Nov 2013</strong></div>
         </div>
-      </div>
-
+      
+      </div> -->
+      
       <div id="tweets-container">
       </div>
-<!--
-      <div class="tweets-Oembed row">
-        <div class="col-md-6">
-            <p>testing twitter <a href="https://dev.twitter.com/docs/embedded-tweets">Oembed api</a> for embedded tweets. It returns json objects with html that will rendered by the twitter js widget.</p>
-                  <blockquote class="twitter-tweet"><p>Search API will now always return "real" Twitter user IDs. The with_twitter_user_id parameter is no longer necessary. An era has ended. ^TS</p>&mdash; Twitter API (@twitterapi) <a href="https://twitter.com/twitterapi/status/133640144317198338" data-datetime="2011-11-07T20:21:07+00:00">November 7, 2011</a></blockquote>
-        <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      </div>
--->
+
+			<!-- TODO switch to Oembed api? https://dev.twitter.com/docs/api/1.1/get/statuses/oembed -->
+
       <div id="faq" class="clearfix"> <!-- faq -->
         <div class="row text-center">
           <h1>Postcards FAQ</h1>
         </div>
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
+          <div class="col-md-8 col-md-offset-2">
             <div class="list-group">
 
               <h4>What's this postcard thing all about?</h4>
@@ -159,7 +156,11 @@
             <p>{{linkify text}}</p>
             <small>
               <a href="http://twitter.com/{{username}}">{{username}}<a/> at 
-              <cite title="{{tweet_id}}"><a href="http://twitter.com/{{username}}/status/{{tweet_id}}">{{tweet_id}}<a/></cite>
+              <cite title="http://twitter.com/{{username}}/status/{{tweet_id}}">
+              	<a href="http://twitter.com/{{username}}/status/{{tweet_id}}">
+              		<time datetime="{{time}}">{{timeFromNow time}}</time>
+              	<a/>
+              </cite>
             </small>
           </blockquote>
         </div>
@@ -178,11 +179,12 @@
     <!-- Bootstrap, jquery, & handlebars core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/handlebars.js"></script>
     <script src="./assets/js/ba-linkify.js"></script>
 
-    <!-- load jsons -->
+    <!-- load json, render handlebars -->
     <script type="text/javascript">
       $(function() {
           $.get('/diybiohi.json').success(function(tweets) {
@@ -208,8 +210,31 @@
       });
 
       Handlebars.registerHelper('linkify', function (text) {
-        var text = linkify(text);
+        var shortText;
+        var urlSchemeRegEx = new RegExp( "[a-z\d.-]+:\/\/(.*)", "i" );
+        var options = {
+        	callback: function( text, href ) {
+          	if (href){
+          		shortText = urlSchemeRegEx.exec(href)[1].substr(0,60);
+          		console.log(text);
+          		return '<a href="' + href + '" title="' + href + '">' + shortText + '</a>';
+          	} else {
+          		return text;
+          	};
+        	}
+        };
+
+        var text = linkify(text, options);
+        // var text = linkify(text);
         return new Handlebars.SafeString(text);
+      });
+
+      Handlebars.registerHelper('timeFromNow', function (text) {
+ 				return moment(text).fromNow();
+      });
+
+      Handlebars.registerHelper('timeShortFormat', function (text) {
+ 				return moment(text).format('lll ZZ');
       });
 
     </script>
