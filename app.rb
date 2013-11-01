@@ -21,7 +21,7 @@ end
 get '/tweets.json' do
   allow_cors
   content_type "application/json"
-  tweets_collection.find.limit(30).sort({tweet_id: -1}).to_a.to_json
+  tweets_collection.find.sort({tweet_id: -1}).to_a.to_json
 end
 
 # json endpoint for only #diybiohi tweets. 
@@ -35,7 +35,7 @@ end
 get '/diybiohi.json' do
   allow_cors
   content_type "application/json"
-  tweets_collection.find("text" => {"$regex" => '.*diybiohi.*'}).sort(:time => :desc).limit(15).to_a.to_json
+  tweets_collection.find("text" => {"$regex" => '.*diybiohi.*'}).sort(:time => :desc).to_a.to_json
 end
 
 get '/' do
