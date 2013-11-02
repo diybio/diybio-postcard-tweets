@@ -17,6 +17,11 @@ options '/diybiohi.json' do
   halt 200
 end
 
+options '/diybiohi-archive.json' do
+  allow_cors
+  halt 200
+end
+
 # json endpoint for all tweets
 get '/tweets.json' do
   allow_cors
@@ -35,7 +40,14 @@ end
 get '/diybiohi.json' do
   allow_cors
   content_type "application/json"
-  tweets_collection.find("text" => {"$regex" => '.*diybiohi.*'}).sort(:time => :desc).to_a.to_json
+  # tweets_collection.find("text" => {"$regex" => '.*diybiohi.*'}).sort(:time => :desc).to_a.to_json
+  tweets_collection.find({ "text" => { "$regex" => '.*diybiohi.*'}, "time" => {"$gte" => "2013-11-01T00:00:00Z"} }).sort(:time => :desc).to_a.to_json
+end
+
+get '/diybiohi-archive.json' do
+  allow_cors
+  content_type "application/json"
+  tweets_collection.find({ "text" => { "$regex" => '.*diybiohi.*'}, "time" => {"$lt" => "2013-11-01T00:00:00Z"} }).sort(:time => :desc).to_a.to_json
 end
 
 get '/' do

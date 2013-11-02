@@ -41,7 +41,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="http://twitter.com/intent/tweet?text=replace+this+text+with+a+description+and+a+photo+of+your+cool+project-+include+the+following+hashtag:+%23diybiohi" target="postcard_tweet">Contribute</a></li>
             <li><a href="https://docs.google.com/spreadsheet/viewform?formkey=dFpESTlEeW5zLVEyakxkSkhnMHZwNFE6MQ" target="postcard_subscribe">Subscribe</a></li>
-            <li><a href="http://diybio.org/postcards/vol1/">Archive</a></li>
+            <li><a href="#archive">Archive</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -94,11 +94,12 @@
         </div>
       
       </div> -->
-      
-      <div id="tweets-container">
-      </div>
 
 			<!-- TODO switch to Oembed api? https://dev.twitter.com/docs/api/1.1/get/statuses/oembed -->
+
+
+	 		<div id="tweets-container">
+	 		</div>
 
       <div id="faq" class="clearfix"> <!-- faq -->
         <div class="row text-center">
@@ -133,8 +134,15 @@
               <h4>How do I unsubscribe?</h4>
               <p>Email <a href="mailto:postcards@diybio.org">postcards@diybio.org</a> with your full name and ask to unsubscribe.</p>
 
+              <h4>When will I see my entry here?</h4>
+              <p>The server fetches <em>"#diybiohi"</em> tweets from twitter every 10 minutes.</p>
+
+              <h4>How does this site work?</h4>
+              <p>It's <a href="https://github.com/diybio/diybio-postcard-tweets">open source &amp; on github</a>. Built with the twitter api, ruby twitter gem, heroku, mongo, bootstrap, and lots of javascript. Want the diybio tweets via JSON?
+              <div class="well"><a href="/diybiohi.json">#diybiohi</a>, <a href="/diybiohi-archive.json">#diybiohi-archive</a>, &amp; <a href="/tweets.json">"diybio"</a>.</p></div>
+
               <h4>Where can I see prior postcards?</h4>
-              <p>The first batch went out <a href="http://diybio.org/postcards/vol1/">January 2012.</a></p>
+              <p>The first batch went out <a href="http://diybio.org/postcards/vol1/">January 2012.</a> You can view the <a href="http://diybio.org/postcards/vol1/">original entries on wordpress</a> and in the <a href="#archive">new archive</a>.</p>
               <img src="assets/images/2011-01-01_postcardv1_600x450.jpg" class="img-rounded img-responsive">
 
             </div>
@@ -143,6 +151,13 @@
       </div>
 
     </div> <!-- /container -->
+
+
+ 		<div id="archive">
+ 			<h1 class="text-center">#diybiohi archive</h1>
+      <div class="container" id="tweets-archive">
+      </div>
+ 		</div>
 
     <!-- handlebars tweets container template -->
     <script id="entry-template" type="text/x-handlebars-template">
@@ -184,21 +199,6 @@
     <script src="./assets/js/handlebars.js"></script>
     <script src="./assets/js/ba-linkify.js"></script>
 
-    <!-- load json, render handlebars -->
-    <script type="text/javascript">
-      $(function() {
-          $.get('/diybiohi.json').success(function(tweets) {
-            // console.log(tweets);
-            var source   = $("#entry-template").html();
-            var template = Handlebars.compile(source);
-            var context = { tweets: tweets };
-            var html    = template(context);
-
-            $('#tweets-container').html(html);
-          });
-      });
-    </script>
-
     <!-- handlebars helpers -->
     <script type="text/javascript">
 
@@ -215,8 +215,7 @@
         var options = {
         	callback: function( text, href ) {
           	if (href){
-          		shortText = urlSchemeRegEx.exec(href)[1].substr(0,60);
-          		console.log(text);
+          		shortText = urlSchemeRegEx.exec(href)[1].substr(0,45);
           		return '<a href="' + href + '" title="' + href + '">' + shortText + '</a>';
           	} else {
           		return text;
@@ -237,6 +236,39 @@
  				return moment(text).format('lll ZZ');
       });
 
+    </script>
+
+    <!-- load json, render handlebars -->
+    <script type="text/javascript">
+      $(function() {
+          $.get('/diybiohi.json').success(function(tweets) {
+            var source = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var context = { tweets: tweets };
+            
+            // if no submissions, insert :(
+            if( context.tweets.length ){
+            	var html = template(context);
+            }else{
+            	var html = '<div class="col-md-12 text-center"><h3>No Submissions Yet :(</h3><p>submit something!</p></div>';
+            };
+
+            $('#tweets-container').html(html);
+          });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(function() {
+          $.get('/diybiohi-archive.json').success(function(tweets) {
+            var source   = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+            var context = { tweets: tweets };
+            var html    = template(context);
+
+            $('#tweets-archive').html(html);
+          });
+      });
     </script>
 
   <!-- livereload -->
