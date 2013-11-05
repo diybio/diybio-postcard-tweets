@@ -34,8 +34,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="/"><img src="assets/images/diybio_logo_googles.png" class="pull-left logo"></a>
-          <a class="navbar-brand" href="/">diybio postcard project</a>
+          <a href="http://diybio.org"><img src="assets/images/diybio_logo_googles.png" class="pull-left logo"></a>
+          <a class="navbar-brand" href="http://diybio.org">diybio postcard project</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -138,12 +138,11 @@
               <p>The server fetches <em>"#diybiohi"</em> tweets from twitter every 10 minutes.</p>
 
               <h4>How does this site work?</h4>
-              <p>It's <a href="https://github.com/diybio/diybio-postcard-tweets">open source &amp; on github</a>. Built with the twitter api, ruby twitter gem, heroku, mongo, bootstrap, and lots of javascript. Want the diybio tweets via JSON?
-              <div class="well"><a href="/diybiohi.json">#diybiohi</a>, <a href="/diybiohi-archive.json">#diybiohi-archive</a>, &amp; <a href="/tweets.json">"diybio"</a>.</p></div>
+              <p>It's <a href="https://github.com/diybio/diybio-postcard-tweets">open source &amp; on github</a>. Built with sinatra, the twitter api, ruby twitter gem, heroku, mongo, bootstrap, handlebars.js, &amp; jquery. Want the diybio tweets via JSON?
+              <div class="well"><a href="/diybiohi.json">#diybiohi</a>, <a href="/diybiohi-archive.json">#diybiohi-archive</a>, &amp; <a href="/tweets.json">"diybio"</a>.</div></p>
 
               <h4>Where can I see prior postcards?</h4>
               <p>The first batch went out <a href="http://diybio.org/postcards/vol1/">January 2012.</a> You can view the <a href="http://diybio.org/postcards/vol1/">original entries on wordpress</a> and in the <a href="#archive">new archive</a>.</p>
-              <img src="assets/images/2011-01-01_postcardv1_600x450.jpg" class="img-rounded img-responsive">
 
             </div>
           </div>
@@ -154,10 +153,54 @@
 
 
  		<div id="archive">
- 			<h1 class="text-center">#diybiohi archive</h1>
-      <div class="container" id="tweets-archive">
-      </div>
- 		</div>
+ 			<div class="container">
+ 				<div class="row">
+ 					<div class="col-md-6 col-md-offset-3">
+ 						<h1 class="text-center">#diybiohi archive - Vol 1</h1>
+ 						<img src="assets/images/2011-01-01_postcardv1_600x450.jpg" class="img-rounded img-responsive">
+ 						<p class="text-muted">Diybio Postcard: Vol 1 (Jan 2012)</p>
+ 					</div>
+     		</div>
+
+      	<div id="tweets-archive">
+      	</div>
+
+      </div> <!-- /container -->
+ 		</div> <!-- /archive -->
+	
+		<footer class="container">
+
+			<div class="row">
+				<div class="col-md-4">
+					<a href="http://diybio.org/local/">
+						<img src="http://diybiology.files.wordpress.com/2011/10/local_diybio_europe_101520111.jpg?w=260&h=130"></img>
+					</a>
+					<a href="http://diybio.org/local/">
+						<h3>LOCAL</h3>
+					</a>
+					<p>Find local groups, community labs, people and events near you.</p>
+				</div>
+				<div class="col-md-4">
+					<a href="http://ask.diybio.org/">
+						<img src="http://diybiology.files.wordpress.com/2011/10/safety_goggles_260_130.jpg?w=260&h=130"></img>
+					</a>
+					<a href="http://ask.diybio.org/">
+						<h3>SAFETY</h3>
+					</a>
+					<p>Question about safety? Ask a professional biosafety expert your question now: <a href="http://ask.diybio.org">ask.diybio.org</a></p>
+				</div>
+				<div class="col-md-4">
+					<a href="http://postcards.diybio.org/">
+						<img src="http://diybiology.files.wordpress.com/2011/10/postage_10152011b.jpg?w=259&h=130"></img>
+					<a/>
+					<a href="http://postcards.diybio.org/">
+						<h3>POSTCARDS</h3>
+					</a>
+					<p>The pulse of the DIYbio community delivered to your doorstep in the world's tiniest newsletter.</p>
+				</div>
+			</div>
+
+		</footer>
 
     <!-- handlebars tweets container template -->
     <script id="entry-template" type="text/x-handlebars-template">
