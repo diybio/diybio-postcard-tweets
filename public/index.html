@@ -48,7 +48,7 @@
       </div>
     </div>
 
-
+    <header>
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
@@ -71,29 +71,17 @@
           </div>
         </div>
       </div> <!-- /jumbotron -->
+    </div> <!-- /container -->
+    </header>
 
-      <div class="row launch-progress">
+    <div id="main">
+    <div class="container">
+
+      <div class="row">
         <div class="col-md-12 text-center">
-          <h1>Current Submissions</h1>
+          <h1 class="light-shadow">Current Submissions</h1>
         </div>
       </div>
-
-<!-- TODO make launch bars dynamic
-			<div class="launch-progress">
-
-        <div class="row">
-          <div class="col-md-3 col-sm-3 text-center">contributions open: <strong>1 Nov 2013</strong></div>
-          <div class="col-md-6 col-sm-6">
-            <div class="progress progress-striped active">
-              <div class="progress-bar" role="progressbar" aria-valuenow="45" aria- valuemin="0" aria-valuemax="100" style="width: 45%">
-                <span class="sr-only">45% Complete</span>
-              </div>
-            </div>
-          </div>          
-          <div class="col-md-3 col-sm-3 text-center">postcards printed: <strong>24 Nov 2013</strong></div>
-        </div>
-      
-      </div> -->
 
 			<!-- TODO switch to Oembed api? https://dev.twitter.com/docs/api/1.1/get/statuses/oembed -->
 
@@ -103,7 +91,7 @@
 
       <div id="faq" class="clearfix"> <!-- faq -->
         <div class="row text-center">
-          <h1>Postcards FAQ</h1>
+          <h1 class="light-shadow">Postcards FAQ</h1>
         </div>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
@@ -150,13 +138,14 @@
       </div>
 
     </div> <!-- /container -->
+    </div> <!-- /main --! -->
 
 
  		<div id="archive">
  			<div class="container">
  				<div class="row">
  					<div class="col-md-6 col-md-offset-3">
- 						<h1 class="text-center">#diybiohi archive - Vol 1</h1>
+ 						<h1 class="text-center light-shadow">#diybiohi archive - Vol 1</h1>
  						<img src="assets/images/2011-01-01_postcardv1_600x450.jpg" class="img-rounded img-responsive">
  						<p class="text-muted">Diybio Postcard: Vol 1 (Jan 2012)</p>
  					</div>
@@ -258,7 +247,9 @@
         var options = {
         	callback: function( text, href ) {
           	if (href){
-          		shortText = urlSchemeRegEx.exec(href)[1].substr(0,45);
+              // shortText = urlSchemeRegEx.exec(href)[1].substr(0,45);
+              // disabling substring shortening, using CSS word-wrap instead
+              shortText = urlSchemeRegEx.exec(href)[1];
           		return '<a href="' + href + '" title="' + href + '">' + shortText + '</a>';
           	} else {
           		return text;
@@ -293,7 +284,7 @@
             if( context.tweets.length ){
             	var html = template(context);
             }else{
-            	var html = '<div class="col-md-12 text-center"><h3>No Submissions Yet :(</h3><p>submit something!</p></div>';
+            	var html = '<div class="row"><div class="col-md-12 text-center"><img src="assets/images/postcard_fail_mouth_pipetting_750x589.jpg" class="col-md-6 col-md-offset-3 img-rounded img-responsive"></img></div></div>';
             };
 
             $('#tweets-container').html(html);
