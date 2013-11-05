@@ -31,7 +31,7 @@ header {
 
 div#faq { margin-top:40px; }
 
-#tweets-container blockquote { 
+.tweets-list blockquote { 
 	overflow: hidden;
 	word-wrap: break-word; 
 }
