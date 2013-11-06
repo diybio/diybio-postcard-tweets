@@ -1,6 +1,7 @@
 require_relative './shared_config'
 require 'json'
 require 'sinatra'
+require 'newrelic_rpm'
 
 def allow_cors
   response.headers["Access-Control-Allow-Origin"] = "*"
