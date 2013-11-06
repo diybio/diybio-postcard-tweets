@@ -12,6 +12,7 @@
 header {
 	box-shadow: white 0 1px 0;
 	border-bottom: 1px solid #bbb;
+	/* thanks to subtlepatterns.com for the background images */
 	background-image: url('../images/paper_fibers.png');
 	background-size: auto; 
 	background-repeat: repeat repeat;
@@ -39,19 +40,19 @@ header {
 
 @media screen and (max-width: 768px) { 
 	.btn-block { margin-bottom: 1.33em; }	
-	.navbar .logo { padding: 16px 0 0 15px; }
+	.navbar .logo { margin-top: 10px; padding-left: 15px; }
 	.navbar-brand { font-size: 16px; }
 	.jumbotron h2 { font-size: 1.3em; text-align: center; }
 	.img-responsive { margin: 0 auto; }
 }
 
-// retina support for background images
+/* retina support for background images */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 
 	header {
 		background-image: url('../images/paper_fibers_@2X.png');
 		background-size: 410px 410px;
-		// This should match the dimensions of the original resolution image
+		/* This should match the dimensions of the original resolution image */
 	}
 
 	#archive {
