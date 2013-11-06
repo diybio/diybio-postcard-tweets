@@ -12,9 +12,26 @@
 header {
 	box-shadow: white 0 1px 0;
 	border-bottom: 1px solid #bbb;
+	background-image: url('../images/paper_fibers.png');
+	background-size: auto; 
+	background-repeat: repeat repeat;
 }
 
-.navbar .logo { padding: 14px 10px 0 0; }
+.navbar { 
+	margin-bottom: 0; 
+	background-color: transparent;
+}
+
+.navbar .logo { 
+	margin-top: 10px;
+	padding-right: 10px;
+	max-height: 30px;
+}
+
+.navbar-brand {
+	font-family: 'Lato', Helvetica, Arial, sans-serif;
+	text-shadow: 0px 0px 1px #c7c5c7;
+}
 
 .jumbotron { background-color: transparent; padding-bottom: 0; }
 
@@ -25,6 +42,22 @@ header {
 	.navbar .logo { padding: 16px 0 0 15px; }
 	.navbar-brand { font-size: 16px; }
 	.jumbotron h2 { font-size: 1.3em; text-align: center; }
+	.img-responsive { margin: 0 auto; }
+}
+
+// retina support for background images
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+
+	header {
+		background-image: url('../images/paper_fibers_@2X.png');
+		background-size: 410px 410px;
+		// This should match the dimensions of the original resolution image
+	}
+
+	#archive {
+		background-image: url('../images/struckaxiom_@2X.png');
+		background-size: 410px 410px;
+	}	
 }
 
 #main h1 {margin-top: 40px; margin-bottom: 40px;}
@@ -44,6 +77,9 @@ div#faq { margin-top:40px; }
 	-moz-box-shadow: white 0 1px 0;
 	box-shadow: white 0 1px 0;
 	border-bottom: 1px solid #bbb;
+	background-image: url('../images/struckaxiom.png');
+	background-size: auto; 
+	background-repeat: repeat repeat;
 }
 
 #archive h1 { margin-top: 20px; margin-bottom: 20px; }
