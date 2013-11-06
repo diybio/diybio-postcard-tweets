@@ -40,13 +40,14 @@ header {
 
 @media screen and (max-width: 768px) { 
 	.btn-block { margin-bottom: 1.33em; }	
-	.navbar .logo { margin-top: 10px; padding-left: 15px; }
+	.navbar .logo { margin-top: 10px; padding-left: 15px; padding-right:0; }
 	.navbar-brand { font-size: 16px; }
 	.jumbotron h2 { font-size: 1.3em; text-align: center; }
 	.img-responsive { margin: 0 auto; }
 }
 
 /* retina support for background images */
+/* thanks labs.bigroomstudios.com/libraries/Retinaize-your-images-with-js */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 
 	header {
