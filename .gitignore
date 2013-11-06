@@ -6,3 +6,4 @@
 !.keep
 .env
 .rvmrc
+/log

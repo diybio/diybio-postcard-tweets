@@ -1,6 +1,7 @@
 require_relative './shared_config'
 require_relative './tweet_saver'
 require 'twitter'
+require 'newrelic_rpm'
 
 Twitter.configure do |config|
   config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
@@ -12,6 +13,8 @@ end
 Twitter.middleware.insert_after Twitter::Response::RaiseError, Faraday::Response::Logger
 
 class RecentRestSearcher
+  include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
+
   def initialize(term)
     @term = term
   end
@@ -45,6 +48,8 @@ class RecentRestSearcher
 
     tweets
   end
+
+  add_transaction_tracer :recent_tweets, :category => :task
 end
 
 tweets = RecentRestSearcher.new(ENV['TWITTER_SEARCH'] || "#diybiohi").recent_tweets
